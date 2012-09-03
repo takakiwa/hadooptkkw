@@ -1,80 +1,54 @@
-
-var memoryGraphViewElement = {
-	viewClassName : "wgp.DygraphElementView",
-	viewAttribute : {
-		width: 300,
-		height: 300,
-		graphId: "Memory",
-		attributes : {
-			xlabel: "Time",
-			ylabel: "Memory",
-			labels:["time","PC1","PC2"]
-		}
-	}
-};
-
-var cpuGraphViewElement = {
-	viewClassName : "wgp.DygraphElementView",
-	viewAttribute : {
-		width: 300,
-		height: 300,
-		graphId: "CPU",
-		attributes : {
-			xlabel: "Time",
-			ylabel: "CPU ",
-			labels:["time","PC1","PC2"]
-		}
-	}
-};
-
 var mapTabElement = {
-	viewClassName : "wgp.MapView",
+	viewClassName : "wgp.mapView",
 	tabTitle : "Map",
 };
 
-var ganttChartTabElement = {
-		viewClassName : "wgp.MapView",
-		tabTitle : "ガントチャート",
-	};
-
-var graphAreaTabElement = { 
+/*var graphAreaTabElement = { 
 	viewClassName : "wgp.MultiAreaView",
 	rootView:appView,
 	tabTitle : "Graph",
-	collection :[memoryGraphViewElement, cpuGraphViewElement]
-};
+	collection :[cpuGraphViewElement]
+};*/
 
-var tabViewElement = {
+/*var testTabElement = {
+	viewClassName : "wgp.MultiAreaView",
+	rootView:appView,
+	tabTitle : "Test",
+	collection :[memoryGraphViewElement]
+};*/
+
+/*var tabViewElement = {
 	viewClassName: "wgp.TabView",
 	rootView:appView,
-	collection:[mapTabElement, graphAreaTabElement]
-};
+	collection:[mapTabElement, graphAreaTabElement, testTabElement]
+};*/
 
-var tabViewElement2 = {
-		viewClassName: "wgp.TabView",
+/*var arrowChartElement = {
+		viewClassName : "ArrowChartView",
+};*/
+
+/*var dygraphChartElement = {
+		viewClassName : "DygraphChartView",
+};*/
+
+var parentTmpElement = {
+		viewClassName : "ParentTmpView",
 		rootView:appView,
-		collection:[ganttChartTabElement, graphAreaTabElement, graphAreaTabElement]
-	};
-
-var ganttChartViewElement = {
-		viewClassName : "ganttChartView",
-		rootView : appView
 };
 
-var ganttChartMultiElement = {
+var arrowChartViewElement = {
 		viewClassName : "wgp.MultiAreaView",
-		rootView : appView,
-		collection : [ganttChartViewElement]
+		rootView:appView,
+		collection :[parentTmpElement]
+//		collection :[arrowChartElement]
+
 };
 
-//wgp.constants.VIEW_SETTINGS = {
-//	"default" : graphAreaTabElement,
-//	"/graph1/" : tabViewElement,
-//	"/ganttchart/" :tabViewElement2
-//	
-//};
+
 
 wgp.constants.VIEW_SETTINGS = {
-		"default" : ganttChartMultiElement,
-		"/ganttchart/" : ganttChartMultiElement
-	};
+	//"default" : graphAreaTabElement,
+	//"/graph1/" : tabViewElement,
+	"/takakiwa/":parentTmpElement
+};
+	

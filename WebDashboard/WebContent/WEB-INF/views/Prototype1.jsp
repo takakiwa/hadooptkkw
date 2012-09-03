@@ -2,23 +2,13 @@
     <html>
     <head>
     <%@ include file="../common/javaScriptInclude.jsp" %>
+    
+    <script src="<%=request.getContextPath()%>/resources/js/ganttChart/view/ganttChartView.js" type="text/javaScript"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/ganttChart/model/ganttChartModel.js" type="text/javaScript"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/ganttChart/mock/ganttChartDataMock.js" type="text/javaScript"></script>
+    
 	<style type="text/css">
     </style>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ArrowChart/view/dygraphChartView.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ArrowChart/model/dygraphChartModel.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ArrowChart/mock/dygraphChartDataMock.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ArrowChart/view/regionChartView.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ArrowChart/model/arrowChartModel.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ArrowChart/mock/arrowChartDataMock.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ParentView/view/regionView.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ParentView/model/parentTmpModel.js></script>
-	<script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/ParentView/mock/parentTmpDataMock.js></script>
-    <script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/common/map/regionStateElementView.js></script>
-    <script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/common/map/errorStateElementView.js></script>
-    <script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/common/map/lineStateElementView.js></script>
-    <script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/common/map/textAreaStateElementView.js></script>
-    <script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/common/map/queueStateElementView.js></script>
-    <script type="text/javascript" src=<%=request.getContextPath() %>/resources/js/common/map/latencyStateElementView.js></script>
     </head>
     <body id="main" oncontextmenu="return false;" onload="self.focus();">
     <div id="menuBar_" style="width:1280px; height:20px;"></div>
@@ -30,12 +20,12 @@ var viewArea1 = {};
 var viewArea2 = {};
 
 viewArea1.width = 300;
-viewArea1.height = 800;
+viewArea1.height = 400;"WebContent/WEB-INF/views/BackbonePrototype2.jsp"
 viewArea1.rowspan = 1;
 viewArea1.colspan = 1;
 
 viewArea2.width = 900;
-viewArea2.height = 800;
+viewArea2.height = 400;
 viewArea2.rowspan = 1;
 viewArea2.colspan = 1;
 
@@ -53,59 +43,69 @@ var appView = new wgp.AppView();
 <script src="/WebDashboard/resources/js/common/user.js" type="text/javaScript"></script>
 
 <script>
-/*var arrowChartView = new arrowChartView(
-			{id:"arrowChart"
-			});*/
+//var GanttChartView = new ganttChartView({
+//		id : "ganttChart_area"
+//	});
+//	appView.addViews([GanttChartView]);
+//	setInterval(function(){GanttChartDataMock()}, 500);
+var ganttChart1 = {
+    type : wgp.constants.CHANGE_TYPE.ADD,
+	jobId : "1",
+	jobName : "job1",
+	status : "success",
+	submitTime : "2012-08-27 00:00:00",
+	startTime : "2012-08-27 00:01:00",
+	finishTime : "2012-08-27 00:10:00"
+};
+var ganttChart2 = {
+	    type : wgp.constants.CHANGE_TYPE.ADD,
+		jobId : "2",
+		jobName : "job2",
+		status : "failed",
+		submitTime : "2012-08-27 00:02:00",
+		startTime : "2012-08-27 00:05:00",
+		finishTime : "2012-08-27 00:20:00"
+	};
+var ganttChart3 = {
+	    type : wgp.constants.CHANGE_TYPE.ADD,
+		jobId : "3",
+		jobName : "job3",
+		status : "success",
+		submitTime : "2012-08-27 00:05:00",
+		startTime : "2012-08-27 00:010:00",
+		finishTime : "2012-08-27 00:15:00"
+	};
+var ganttChart4 = {
+	    type : wgp.constants.CHANGE_TYPE.ADD,
+		jobId : "4",
+		jobName : "job",
+		status : "killed",
+		submitTime : "2012-08-27 00:07:00",
+		startTime : "2012-08-27 00:012:00",
+		finishTime : "2012-08-27 00:30:00"
+	};
+sendModel = [{
+	windowId : "ganttChart_area",
+	data:[ganttChart1, ganttChart2, ganttChart3, ganttChart4]
+}];
+appView.notifyEvent(sendModel);
+
+
 var treeView = new wgp.TreeView({id:"tree_area", targetId:"contents_area"});
-//var tabView = new wgp.TabView({})
+var tabView = new wgp.TabView({})
 appView.addViews([treeView]);
-//appView.addViews([arrowChartView]);
-
-//setInterval(dygraphChartDataMock, 1000);
-
-
 
 var treeProperty1 = {
-    type:wgp.constants.CHANGE_TYPE.ADD,
-    treeId:0,
-		data: "test1",
-		attr: {
-			viewClassName: "test1View"
-		}
-};
-var treeProperty2 = {
-    type:wgp.constants.CHANGE_TYPE.ADD,
-    treeId:1,
-	data: "test2"
-};
-
-var treeProperty3 = {
-    type:wgp.constants.CHANGE_TYPE.UPDATE,
-    treeId:0,
-	data: "graphView",
-	id: "/graph1/graph",
-	parentTreeId: null
-};	
-
-var treeProperty4 = {
-    type:wgp.constants.CHANGE_TYPE.UPDATE,
-    treeId:1,
-	data: "TabMultiView",
-	id: "/graph2/graph",
-	parentTreeId: null
-};
-
-var treeProperty5 = {
 	    type:wgp.constants.CHANGE_TYPE.ADD,
-	    treeId:2,
-		data: "ArrowView",
-		id: "/takakiwa/graph",
+	    treeId:0,
+		data: "Ganttchart",
+		id: "/ganttchart/graph",
 		parentTreeId: null
 	};
 
 sendData = [{
 	windowId:"tree_area",
-	data:[treeProperty1, treeProperty2, treeProperty3, treeProperty4, treeProperty5]
+	data:[treeProperty1]
 }];
 appView.notifyEvent(sendData);
 
@@ -143,7 +143,6 @@ var property1 = {
     type:wgp.constants.CHANGE_TYPE.ADD,
     state:wgp.constants.STATE.NORMAL,
     objectName:"MapStateElementView",
-    state:wgp.constants.STATE.NORMAL,
     objectId : 1,
     pointX : 100,
     pointY : 100,
@@ -171,6 +170,7 @@ var property3 = {
     width : 100,
     height : 100
 };
+
 
 var mapDataInterval = function(windowId){
 	function innerFunction(){

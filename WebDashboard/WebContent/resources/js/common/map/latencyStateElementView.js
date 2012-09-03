@@ -1,6 +1,4 @@
-
-
-wgp.LineStateElementView = Backbone.View.extend({
+wgp.LatencyStateElementView = Backbone.View.extend({
     initialize:function(argument){
     	_.bindAll();
         this._paper = argument.paper;
