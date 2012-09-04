@@ -6,8 +6,8 @@ var paperWidth = 725;
 var startLineX = 100;
 // ひとつのセルの高さの設定
 var cellHeight = 80;
-// アローチャート部分の長さ
-var arrowChartWidth = paperWidth - startLineX;
+
+var regionChartWidth = paperWidth - startLineX;
 
 // グラフの上部の領域
 var paperHeightUp = paperHeight * 0.7;
@@ -18,9 +18,6 @@ var stringHeightOffset = -10;
 // IDと登場回数を記憶する辞書
 var idCounter = {};
 
-// //////////////////////////////////////アロー関数群////////////////////////////////////////////////////////////
-
-// アローチャート座標をチャート全体座標系に直す。
 function getChartPosition(x, y) {
 	return {
 		posX : x + startLineX,
@@ -34,10 +31,10 @@ function getChartPosition(x, y) {
 /*
  * function calcArrowLengthAndStartPos(startTime, finishTime, trialTime,
  * allTrialTime, rowNum) { var x = 0, y = 0, width = 0; // 幅 width =
- * arrowChartWidth * (finishTime - startTime) * 1.0 / intervalTime; // スタートx位置 x =
- * startLineX + arrowChartWidth * (startTime - minGraphTime) * 1.0 /
+ * regionChartWidth * (finishTime - startTime) * 1.0 / intervalTime; // スタートx位置
+ * x = startLineX + regionChartWidth * (startTime - minGraphTime) * 1.0 /
  * intervalTime; // console.log("startLineX: " + startLineX + " arrowwidth " + //
- * arrowChartWidth // + " intervalTime " + intervalTime + " startTime " +
+ * regionChartWidth // + " intervalTime " + intervalTime + " startTime " +
  * startTime // + " finishTime " + finishTime + " mingraph " + minGraphTime); //
  * スタートy位置 y = cellHeight * trialTime / (1 + allTrialTime) + rowNum *
  * cellHeight; // console.log("x = " + x + " y = " + y + " width = " + width);
@@ -84,7 +81,7 @@ function maxRegion(timeArray, keyNum) {
 	var height = 0;
 	var propertyArray = new Array();
 	var tableNameList = new Array();
-	// width=arrowChartWidth*0.9/keyNumkari.length*0.95;
+	// width=regionChartWidth*0.9/keyNumkari.length*0.95;
 
 	width = keyNum.length;
 
@@ -238,9 +235,9 @@ function widthHeight(propertyArray, maxRegionNum) {
 	var height;
 	var proWidth;
 	var proHeight;
-	width = 0.9 * (arrowChartWidth * 0.9 / widthNum);
+	width = 0.9 * (regionChartWidth * 0.9 / widthNum);
 	// height = paperHeight * 0.9 / maxRegionNum;
-	proWidth = 0.9 * arrowChartWidth / widthNum;
+	proWidth = 0.9 * regionChartWidth / widthNum;
 	proHeight = 0.9 * paperHeightUp / maxRegionNum;
 	for ( var i = 0; i < propertyArray.length; i++) {
 		var heightTmp = 0;
@@ -249,8 +246,8 @@ function widthHeight(propertyArray, maxRegionNum) {
 		propertyArray[i].height = proHeight * propertyArray[i].height;
 
 		propertyArray[i].x = propertyArray[i].x * proWidth
-				+ (arrowChartWidth * 0.9 / widthNum) * ((1 - 0.9) / 2)
-				+ arrowChartWidth * ((1 - 0.9) / 2) + startLineX;
+				+ (regionChartWidth * 0.9 / widthNum) * ((1 - 0.9) / 2)
+				+ regionChartWidth * ((1 - 0.9) / 2) + startLineX;
 		propertyArray[i].y = (propertyArray[i].y + heightTmp - paperHeightUp)
 				* proHeight + paperHeightUp - paperHeightUp * ((1 - 0.9) / 2)
 				- propertyArray[i].height;
@@ -267,9 +264,9 @@ function widthHeightReverse(propertyArray, maxNum) {
 	var height;
 	var proWidth;
 	var proHeight;
-	width = 0.7 * (arrowChartWidth * 0.9 / widthNum);
+	width = 0.7 * (regionChartWidth * 0.9 / widthNum);
 	// height = paperHeight * 0.9 / maxNum;
-	proWidth = 0.9 * arrowChartWidth / widthNum;
+	proWidth = 0.9 * regionChartWidth / widthNum;
 	proHeight = 0.9 * paperHeightDown / maxNum;
 	for ( var i = 0; i < propertyArray.length; i++) {
 		var heightTmp = 0;
@@ -278,8 +275,8 @@ function widthHeightReverse(propertyArray, maxNum) {
 		propertyArray[i].height = proHeight * propertyArray[i].height;
 
 		propertyArray[i].x = propertyArray[i].x * proWidth
-				+ (arrowChartWidth * 0.9 / widthNum) * ((1 - 0.7) / 2)
-				+ arrowChartWidth * ((1 - 0.9) / 2) + startLineX;
+				+ (regionChartWidth * 0.9 / widthNum) * ((1 - 0.7) / 2)
+				+ regionChartWidth * ((1 - 0.9) / 2) + startLineX;
 
 		// alert(-(propertyArray[i].y + heightTmp - paperHeightUp));
 
@@ -297,9 +294,9 @@ function widthHeightReverseLine(propertyArray, maxNum) {
 	var height;
 	var proWidth;
 	var proHeight;
-	// width = 0.7 * (arrowChartWidth * 0.9 / widthNum);
+	// width = 0.7 * (regionChartWidth * 0.9 / widthNum);
 	// height = paperHeight * 0.9 / maxNum;
-	proWidth = 0.9 * arrowChartWidth / widthNum;
+	proWidth = 0.9 * regionChartWidth / widthNum;
 	proHeight = 0.9 * paperHeightDown / maxNum;
 	for ( var i = 0; i < propertyArray.length; i++) {
 		var heightTmp = 0;
@@ -308,8 +305,8 @@ function widthHeightReverseLine(propertyArray, maxNum) {
 		propertyArray[i].height = proHeight * propertyArray[i].height;
 
 		propertyArray[i].x = propertyArray[i].x * proWidth
-				+ (arrowChartWidth * 0.9 / widthNum) * (1 / 2)
-				+ arrowChartWidth * ((1 - 0.9) / 2) + startLineX;
+				+ (regionChartWidth * 0.9 / widthNum) * (1 / 2)
+				+ regionChartWidth * ((1 - 0.9) / 2) + startLineX;
 		propertyArray[i].y = paperHeightUp + paperHeightDown * ((1 - 0.9) / 2)
 				+ propertyArray[i].height;
 
@@ -325,10 +322,10 @@ function widthHeight2(propertyArray, maxRegionNum) {
 	var startX;
 	var startY;
 	var xInterval;
-	width = 0.9 * (arrowChartWidth * 0.9 / widthNum);
-	xInterval = arrowChartWidth * 0.9 / widthNum;
-	startX = (arrowChartWidth * 0.9 / widthNum) * ((1 - 0.9) / 2)
-			+ arrowChartWidth * ((1 - 0.9) / 2);
+	width = 0.9 * (regionChartWidth * 0.9 / widthNum);
+	xInterval = regionChartWidth * 0.9 / widthNum;
+	startX = (regionChartWidth * 0.9 / widthNum) * ((1 - 0.9) / 2)
+			+ regionChartWidth * ((1 - 0.9) / 2);
 	height = paperHeightUp * 0.9 / maxRegionNum;
 	startY = paperHeightUp * ((0.9 + 1) / 2);
 	// paperHeightUp*0.9/hostRegionNum;
@@ -338,10 +335,10 @@ function widthHeight2(propertyArray, maxRegionNum) {
 // function calcArrowLengthAndStartPos(timeArray,keyNumkari) { var x = 0, y = 0,
 // width = 0,height=0; var ykari=new Array(); for(var k=0;k<keyNumkari;k++){
 // ykari[k]=new Array(); } var hostRegionNum=0; var RegionArray=new Array();
-// width =arrowChartWidth*0.9/keyNumkari.length*0.95; for(var
+// width =regionChartWidth*0.9/keyNumkari.length*0.95; for(var
 // i=0;i<keyNumkari.length;i++){
 // 
-// x=arrowChartWidth*((1-0.9)/2)+arrowChartWidth*0.9/keyNumkari.length*(1-0.95)+width*keyNumkari[i];
+// x=regionChartWidth*((1-0.9)/2)+regionChartWidth*0.9/keyNumkari.length*(1-0.95)+width*keyNumkari[i];
 // }
 // for(var j=0;j<timeArray.length;j++){
 // ykari=+timeArray[i].measurement_value[keyNumkari[j]]; }
@@ -358,7 +355,7 @@ function widthHeight2(propertyArray, maxRegionNum) {
 function calcErrorLengthAndStartPos(eventTime, trialTime, allTrialTime, rowNum) {
 	// /////////ここで長さとスタート位置の計算
 	var x = 0, y = 0;
-	x = startLineX + arrowChartWidth * (eventTime - minGraphTime) * 1.0
+	x = startLineX + regionChartWidth * (eventTime - minGraphTime) * 1.0
 			/ intervalTime;
 	// スタートy位置
 	y = cellHeight * trialTime * 1.0 / (1 + allTrialTime) + rowNum * cellHeight;
@@ -374,7 +371,7 @@ function calcErrorLengthAndStartPos(eventTime, trialTime, allTrialTime, rowNum) 
 // //
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-var ArrowChartView = wgp.AbstractView
+var RegionChartView = wgp.AbstractView
 		.extend({
 			initialize : function() {
 				this.viewType = wgp.constants.VIEW_TYPE.VIEW;
@@ -419,7 +416,7 @@ var ArrowChartView = wgp.AbstractView
 					objectId : 1,
 					objectName : null,
 					height : 0,
-					width : arrowChartWidth,
+					width : regionChartWidth,
 					pointX : startLineX,
 					pointY : paperHeightUp,
 					color : "black"
@@ -569,19 +566,30 @@ var ArrowChartView = wgp.AbstractView
 				for ( var k = 0; k < modelInfo2.length; k++) {
 					// alert(modelInfo2[k].y - modelInfo2[k].height);
 					var modelData11;
+					var modelData_latency;
 					if (k < modelInfo2.length - 1) {
 						modelData11 = new wgp.MapElement({
-							objectId : 90000 + k,
+							objectId : 90000 + 2 * k,
 							objectName : null,
 							height : modelInfo2[k + 1].height
 									- modelInfo2[k].height,
-							width : (arrowChartWidth * 0.9 / keyNum.length),
+							width : (regionChartWidth * 0.9 / keyNum.length),
 							pointX : modelInfo2[k].x,
 							pointY : modelInfo2[k].y,
 							strokeWidth : 10
 						});
 
 					}
+					modelData_latency = new wgp.MapElement({
+						objectId : 90000 + 2 * k + 1,
+						objectName : null,
+						// height : modelInfo2[k + 1].height
+						// - modelInfo2[k].height,
+						// width : (regionChartWidth * 0.9 / keyNum.length),
+						pointX : modelInfo2[k].x,
+						pointY : modelInfo2[k].y,
+						strokeWidth : 10
+					});
 
 					// var tableID = modelInfo1[k].tableName;
 					// var stringArray = tableID;
@@ -604,7 +612,20 @@ var ArrowChartView = wgp.AbstractView
 						}
 
 					});
+					new wgp.LatencyActionStateElementView({
+						model : modelData_latency,
+						paper : this.paper,
+						state : stateString,
+						info : {
+							time : String(time),
+							// allHost : keyNum,
+							// tableNameList : propertyInfo.tableNameList,
+							hostname : modelInfo2[k].hostname,
+							value : String(modelInfo2[k].value)
+						// tableName : modelInfo[k].tableName
+						}
 
+					});
 				}
 
 				// // textAreaの描画を行う。

@@ -1,54 +1,59 @@
-var mapTabElement = {
-	viewClassName : "wgp.mapView",
-	tabTitle : "Map",
+// var regionView=new RegionView();
+
+
+
+var regionViewUp = {
+	viewClassName : "RegionView",
+	viewAttribute : {
+		width : 500,
+		height : 400
+	}
+};
+var regionViewDown = {
+	viewClassName : "RegionView",
+	viewAttribute : {
+		width : 500,
+		height : 200
+	}
 };
 
-/*var graphAreaTabElement = { 
-	viewClassName : "wgp.MultiAreaView",
-	rootView:appView,
-	tabTitle : "Graph",
-	collection :[cpuGraphViewElement]
-};*/
+var memoryGraphViewElement = {
+	viewClassName : "wgp.DygraphElementView",
+	viewAttribute : {
+		width : 300,
+		height : 300,
+		graphId : "Memory",
+		attributes : {
+			xlabel : "Time",
+			ylabel : "Memory",
+			labels : [ "time", "PC1", "PC2" ]
+		}
+	}
+};
 
-/*var testTabElement = {
-	viewClassName : "wgp.MultiAreaView",
-	rootView:appView,
-	tabTitle : "Test",
-	collection :[memoryGraphViewElement]
-};*/
-
-/*var tabViewElement = {
-	viewClassName: "wgp.TabView",
-	rootView:appView,
-	collection:[mapTabElement, graphAreaTabElement, testTabElement]
-};*/
-
-/*var arrowChartElement = {
-		viewClassName : "ArrowChartView",
-};*/
-
-/*var dygraphChartElement = {
-		viewClassName : "DygraphChartView",
-};*/
+var cpuGraphViewElement = {
+	viewClassName : "wgp.DygraphElementView",
+	viewAttribute : {
+		width : 300,
+		height : 300,
+		graphId : "CPU",
+		attributes : {
+			xlabel : "Time",
+			ylabel : "CPU ",
+			labels : [ "time", "PC1", "PC2" ]
+		}
+	}
+};
 
 var parentTmpElement = {
-		viewClassName : "ParentTmpView",
-		rootView:appView,
+	viewClassName : "wgp.MultiAreaView",
+	rootView : appView,
+	collection : [ regionViewUp, regionViewDown ]
+// collection : [ memoryGraphViewElement, cpuGraphViewElement ]
 };
-
-var arrowChartViewElement = {
-		viewClassName : "wgp.MultiAreaView",
-		rootView:appView,
-		collection :[parentTmpElement]
-//		collection :[arrowChartElement]
-
-};
-
-
 
 wgp.constants.VIEW_SETTINGS = {
-	//"default" : graphAreaTabElement,
-	//"/graph1/" : tabViewElement,
-	"/takakiwa/":parentTmpElement
+	// "default" : graphAreaTabElement,
+	// "/graph1/" : tabViewElement,
+	"/takakiwa/" : parentTmpElement
 };
-	

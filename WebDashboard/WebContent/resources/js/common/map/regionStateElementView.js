@@ -1,12 +1,12 @@
-function plusMinus(num) {
-	if (num > 0)
-		return 1;
-	else if (num < 0)
-		return -1;
-	else
-		return 1;
-
-}
+//function plusMinus(num) {
+//	if (num > 0)
+//		return 1;
+//	else if (num < 0)
+//		return -1;
+//	else
+//		return 1;
+//
+//}
 
 function addMouseoverregion(regionElement, region) {
 
@@ -24,11 +24,7 @@ function addMouseoverregion(regionElement, region) {
 						+ "Time:</br>" + now + "</br>" + "Hostname:</br>"
 						+ region.hostname + "</br>" + "Amount:</br>"
 						+ region.value;
-				// + "TaskAttemptID:</br>" + region.TaskAttemptID
-				// + "</br>" + "Status:</br>" + region.Status + "</br>"
-				// + "StartTime:</br>" + startd + "</br>"
-				// + "FinishTime:</br>" + find + "</br>"
-				// + "Hostname:</br>" + region.Hostname + "</br>";
+
 				$("#taskInfoSpace").html(infoString);
 			});
 		}
@@ -38,11 +34,7 @@ function addMouseoverregion(regionElement, region) {
 					var region = this.regionInfo;
 					var now = new Date();
 					now.setTime(region.time);
-					// var region = this.regionInfo;
-					// var startd = new Date();
-					// startd.setTime(region.StartTime);
-					// var find = new Date();
-					// find.setTime(region.FinishTime);
+
 					var infoString = "tableName:</br>" + region.tableName
 							+ "</br>" + "Time:</br>" + region.time + "</br>"
 							+ "Hostname:</br>" + region.hostname + "</br>"
@@ -66,7 +58,8 @@ wgp.RegionStateElementView = Backbone.View
 				// alert(this.model.get("state"));
 				console.log(argument.state);
 				this.regionInfo = argument.info;
-				//alert(this.regionInfo.hostname + " " + this.regionInfo.value);
+				// alert(this.regionInfo.hostname + " " +
+				// this.regionInfo.value);
 				this._paper = argument.paper;
 				if (this._paper == null) {
 					alert("paper is not exist");
@@ -87,64 +80,65 @@ wgp.RegionStateElementView = Backbone.View
 				}, {
 					silent : true
 				});
-				var lengthOfregion = Math.sqrt(this.model.attributes.width
-						* this.model.attributes.width
-						+ this.model.attributes.height
-						* this.model.attributes.height);
+				// var lengthOfregion = Math.sqrt(this.model.attributes.width
+				// * this.model.attributes.width
+				// + this.model.attributes.height
+				// * this.model.attributes.height);
+				//
+				// var regionLength = lengthOfregion * 0.12;
+				// if (regionLength <= regionMinLength)
+				// regionLength = regionMinLength;
+				// if (regionLength >= regionMaxLength)
+				// regionLength = regionMaxLength;
+				// var overModelData = new wgp.MapElement({
+				// objectId : 2,
+				// objectName : null,
+				// height : regionLength
+				// * plusMinus(this.model.attributes.height),
+				// width : -regionLength
+				// * plusMinus(this.model.attributes.width),
+				// pointX : this.model.attributes.pointX
+				// + this.model.attributes.width + 2.5,
+				// pointY : this.model.attributes.pointY
+				// + this.model.attributes.height - 2.5
+				// });
+				// var underModelData = new wgp.MapElement({
+				// objectId : 3,
+				// objectName : null,
+				// height : -regionLength
+				// * plusMinus(this.model.attributes.height),
+				// width : -regionLength
+				// * plusMinus(this.model.attributes.width),
+				// pointX : this.model.attributes.pointX
+				// + this.model.attributes.width + 2.5,
+				// pointY : this.model.attributes.pointY
+				// + this.model.attributes.height + 2.5
+				// });
+				// overModelData.set({
+				// "attributes" : {
+				// fill : color,
+				// stroke : color,
+				// "stroke-width" : 7
+				// }
+				// }, {
+				// silent : true
+				// });
+				// underModelData.set({
+				// "attributes" : {
+				// fill : color,
+				// stroke : color,
+				// "stroke-width" : 7
+				// }
+				// }, {
+				// silent : true
+				// });
 
-				var regionLength = lengthOfregion * 0.12;
-				if (regionLength <= regionMinLength)
-					regionLength = regionMinLength;
-				if (regionLength >= regionMaxLength)
-					regionLength = regionMaxLength;
-				var overModelData = new wgp.MapElement({
-					objectId : 2,
-					objectName : null,
-					height : regionLength
-							* plusMinus(this.model.attributes.height),
-					width : -regionLength
-							* plusMinus(this.model.attributes.width),
-					pointX : this.model.attributes.pointX
-							+ this.model.attributes.width + 2.5,
-					pointY : this.model.attributes.pointY
-							+ this.model.attributes.height - 2.5
-				});
-				var underModelData = new wgp.MapElement({
-					objectId : 3,
-					objectName : null,
-					height : -regionLength
-							* plusMinus(this.model.attributes.height),
-					width : -regionLength
-							* plusMinus(this.model.attributes.width),
-					pointX : this.model.attributes.pointX
-							+ this.model.attributes.width + 2.5,
-					pointY : this.model.attributes.pointY
-							+ this.model.attributes.height + 2.5
-				});
-				overModelData.set({
-					"attributes" : {
-						fill : color,
-						stroke : color,
-						"stroke-width" : 7
-					}
-				}, {
-					silent : true
-				});
-				underModelData.set({
-					"attributes" : {
-						fill : color,
-						stroke : color,
-						"stroke-width" : 7
-					}
-				}, {
-					silent : true
-				});
 				this.element = [];
-				for ( var i = 0; i < 3; i++) {
+				for ( var i = 0; i < 1; i++) {
 					this.element[i] = new rectangle(this.model.attributes,
 							this._paper);
 				}
-				for ( var i = 0; i < 3; i++) {
+				for ( var i = 0; i < 1; i++) {
 					this.element[i] = new rectangle(this.model.attributes,
 							this._paper);
 				}
@@ -153,19 +147,20 @@ wgp.RegionStateElementView = Backbone.View
 				// + this.regionInfo.tableName);
 				this.element[0].object.regionInfo = {
 					hostname : this.regionInfo.hostname,
-					tableName : this.regionInfo.tableName
+					tableName : this.regionInfo.tableName,
+					time : this.regionInfo.time
 				};
 
 				// alert(this.element[0].object.regionInfo.hostname+"
 				// "+this.element[0].object.regionInfo.tableName);
-				this.element[1].object.regionInfo = {
-					hostname : this.regionInfo.hostname,
-					tableName : this.regionInfo.tableName
-				};
-				this.element[2].object.regionInfo = {
-					hostname : this.regionInfo.hostname,
-					tableName : this.regionInfo.tableName
-				};
+				// this.element[1].object.regionInfo = {
+				// hostname : this.regionInfo.hostname,
+				// tableName : this.regionInfo.tableName
+				// };
+				// this.element[2].object.regionInfo = {
+				// hostname : this.regionInfo.hostname,
+				// tableName : this.regionInfo.tableName
+				// };
 				addMouseoverregion(this.element, this);
 			},
 			update : function(model) {
@@ -176,14 +171,14 @@ wgp.RegionStateElementView = Backbone.View
 				}, {
 					silent : true
 				});
-				this.element[0].setAttributes(model);
-				this.element[1].setAttributes(model);
-				this.element[2].setAttributes(model);
+				this.element.setAttributes(model);
+				// this.element[1].setAttributes(model);
+				// this.element[2].setAttributes(model);
 			},
 			remove : function(property) {
 				this.element[0].hide();
-				this.element[1].hide();
-				this.element[2].hide();
+				// this.element[1].hide();
+				// this.element[2].hide();
 			},
 			getStateColor : function() {
 				var loopColor = this.regionInfo.tableNameList.length;
@@ -195,23 +190,23 @@ wgp.RegionStateElementView = Backbone.View
 
 				var colorArray = new Array(16);
 
-				colorArray[0] = "rgba(100,50,200,0.05)";
-				colorArray[1] = "rgba(100,100,100,0.05)";
-				colorArray[2] = "rgba(100,150,50,0.05)";
-				colorArray[3] = "rgba(100,200,200,0.05)";
-				colorArray[4] = "rgba(200,50,100,0.05)";
-				colorArray[5] = "rgba(200,100,150,0.05)";
-				colorArray[6] = "rgba(200,150,50,0.05)";
-				colorArray[7] = "rgba(200,200,100,0.05)";
-				colorArray[8] = "rgba(50,50,200,0.05)";
-				colorArray[9] = "rgba(50,100,150,0.05)";
-				colorArray[10] = "rgba(50,150,100,0.05)";
-				colorArray[11] = "rgba(50,200,50,0.05)";
-				colorArray[12] = "rgba(150,50,100,0.05)";
-				colorArray[13] = "rgba(150,100,50,0.05)";
-				colorArray[14] = "rgba(150,150,100,0.05)";
-				colorArray[15] = "rgba(150,200,50,0.05)";
-				// "rgba(100,100,100,0.05)"
+				colorArray[0] = "rgba(100,50,200,0.2)";
+				colorArray[1] = "rgba(50,100,100,0.2)";
+				colorArray[2] = "rgba(100,150,50,0.2)";
+				colorArray[3] = "rgba(200,200,200,0.2)";
+				colorArray[4] = "rgba(100,50,100,0.2)";
+				colorArray[5] = "rgba(50,100,150,0.2)";
+				colorArray[6] = "rgba(200,150,50,0.2)";
+				colorArray[7] = "rgba(150,200,100,0.2)";
+				colorArray[8] = "rgba(50,50,200,0.2)";
+				colorArray[9] = "rgba(100,100,150,0.2)";
+				colorArray[10] = "rgba(150,150,100,0.2)";
+				colorArray[11] = "rgba(50,200,50,0.2)";
+				colorArray[12] = "rgba(150,50,100,0.2)";
+				colorArray[13] = "rgba(200,100,50,0.2)";
+				colorArray[14] = "rgba(50,150,100,0.2)";
+				colorArray[15] = "rgba(150,200,50,0.2)";
+				// "rgba(100,100,100,0.8)"
 				var color = colorArray[colorNum];
 				// var color = wgp.constants.STATE_COLOR[state];
 				if (color == null) {

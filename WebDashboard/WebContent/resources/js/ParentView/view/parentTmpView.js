@@ -316,5 +316,6 @@ var ParentTmpView = wgp.AbstractView
 			onRemove : function(element) {
 				// console.log('called removeModel');
 			},
+			_
 
 		});

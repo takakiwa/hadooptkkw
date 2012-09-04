@@ -4,6 +4,7 @@
 <%@ include file="../common/javaScriptInclude.jsp"%>
 <style type="text/css">
 </style>
+
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/region/mock/TestData.js"></script>
 <script type="text/javascript"
@@ -12,6 +13,9 @@
 	src="<%=request.getContextPath()%>/resources/js/region/view/regionConponentView.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/region/model/regionModel.js"></script>
+
+
+
 </head>
 <body id="main" oncontextmenu="return false;" onload="self.focus();">
 	<div id="menuBar_" style="width: 1280px; height: 20px;"></div>
@@ -21,7 +25,7 @@
 		// initialize perspective
 		var viewArea1 = {};
 		var viewArea2 = {};
-
+		console.log(testData);
 		viewArea1.width = 300;
 		viewArea1.height = 800;
 		viewArea1.rowspan = 1;
@@ -44,13 +48,10 @@
 		var appView = new wgp.AppView();
 	</script>
 
-	<script src="/WebDashboard/resources/js/common/user903.js"
+	<script src="/WebDashboard/resources/js/common/user.js"
 		type="text/javaScript"></script>
 
 	<script>
-		/*var arrowChartView = new arrowChartView(
-		 {id:"arrowChart"
-		 });*/
 		var treeView = new wgp.TreeView({
 			id : "tree_area",
 			targetId : "contents_area"

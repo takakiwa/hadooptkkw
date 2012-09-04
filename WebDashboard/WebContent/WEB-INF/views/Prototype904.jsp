@@ -4,14 +4,33 @@
 <%@ include file="../common/javaScriptInclude.jsp"%>
 <style type="text/css">
 </style>
+
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/region/mock/TestData.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/region/view_old/regionChartView.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/region/view/regionView.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/region/model/regionChartModel.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/region/view/regionConponentView.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/region/mock/dataMock.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/region/model/regionModel.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/region/view_old/regionView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/ParentView/model/parentTmpModel.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/ParentView/mock/parentTmpDataMock.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/regionStateElementView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/errorStateElementView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/lineStateElementView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/textAreaStateElementView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/queueStateElementView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/latencyStateElementView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/common/map/latencyActionStateElementView.js"></script>
 </head>
 <body id="main" oncontextmenu="return false;" onload="self.focus();">
 	<div id="menuBar_" style="width: 1280px; height: 20px;"></div>

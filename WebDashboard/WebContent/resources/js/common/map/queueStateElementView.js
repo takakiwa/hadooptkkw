@@ -36,7 +36,7 @@ function addMouseoverregion(regionElement, region) {
 		regionElement.object.mouseover(function() {
 			var region = this.regionInfo;
 			var now = new Date();
-			//alert(region.time);
+			// alert(region.time);
 			now.setTime(region.time);
 			// var region = this.regionInfo;
 			// var startd = new Date();
@@ -149,19 +149,21 @@ wgp.QueueStateElementView = Backbone.View
 				}
 				this.element[0].object.regionInfo = {
 					hostname : this.regionInfo.hostname,
+					value : this.regionInfo.value,
+					time : this.regionInfo.time
 				// tableName : this.regionInfo.tableName
 				};
 
 				// alert(this.element[0].object.regionInfo.hostname+"
 				// "+this.element[0].object.regionInfo.tableName);
-				this.element[1].object.regionInfo = {
-					hostname : this.regionInfo.hostname,
+				// this.element[1].object.regionInfo = {
+				// hostname : this.regionInfo.hostname,
 				// tableName : this.regionInfo.tableName
-				};
-				this.element[2].object.regionInfo = {
-					hostname : this.regionInfo.hostname,
+				// };
+				// this.element[2].object.regionInfo = {
+				// hostname : this.regionInfo.hostname,
 				// tableName : this.regionInfo.tableName
-				};
+				// };
 				addMouseoverregion(this.element, this);
 			},
 			update : function(model) {
@@ -173,13 +175,13 @@ wgp.QueueStateElementView = Backbone.View
 					silent : true
 				});
 				this.element[0].setAttributes(model);
-				this.element[1].setAttributes(model);
-				this.element[2].setAttributes(model);
+				// this.element[1].setAttributes(model);
+				// this.element[2].setAttributes(model);
 			},
 			remove : function(property) {
 				this.element[0].hide();
-				this.element[1].hide();
-				this.element[2].hide();
+				// this.element[1].hide();
+				// this.element[2].hide();
 			},
 			getStateColor : function() {
 				// var loopColor = this.regionInfo.tableNameList.length;
@@ -208,7 +210,7 @@ wgp.QueueStateElementView = Backbone.View
 				colorArray[14] = "rgba(150,150,100,0.05)";
 				colorArray[15] = "rgba(150,200,50,0.05)";
 				// "rgba(100,100,100,0.05)"
-				var color = "rgba(50,50,50,0.05)";
+				var color = "rgba(50,50,50,0.5)";
 				// var color = wgp.constants.STATE_COLOR[state];
 				if (color == null) {
 					color = wgp.constants.STATE_COLOR[wgp.constants.STATE.NORMAL];
